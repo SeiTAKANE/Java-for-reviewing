@@ -1,0 +1,22 @@
+public class FizzBuzz {
+     //main method
+	public static void main(String[] args) {
+		//call fizz_buzz
+		fizz_buzz(30); // printed "fizzbuzz" in console
+		fizz_buzz(10); // printed "fizz" in console
+		fizz_buzz(6); // printed "buzz" in console
+		fizz_buzz(4); // printed "4" in console 
+	}
+	//fizz_buzz_game
+    public static void fizz_buzz(int number) {
+    	if(number % 15 == 0) {
+    		System.out.println("fizzbuzz");
+    	} else if (number % 5 == 0) {
+    		System.out.println("fizz");
+    	}  else if (number % 3 == 0) {
+    		System.out.println("buzz");
+    	} else {
+    		System.out.println(number);
+    	}
+    }
+}
