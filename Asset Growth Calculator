@@ -1,0 +1,68 @@
+//packages for round
+import java.math.BigDecimal;
+
+//clculating growth of assets
+public class Growth_calculator {
+	public static void main(String[] args) {
+		//rate for my main bank
+		Calculator my_main_bank = new Calculator(0.13);
+		my_main_bank.twice();
+		my_main_bank.three_times();
+		//rate for index_fund
+		Calculator index = new Calculator(6.4);
+		index.twice();
+		index.three_times();
+
+		//simulation with using condition
+		for(double i = 0.1; i<=10; i += 0.1) {
+			BigDecimal num = new BigDecimal(i);
+			BigDecimal growthrate = num.setScale(1,BigDecimal.ROUND_DOWN);
+			System.out.println("if growthrate is"+growthrate);
+			Calculator condition = new Calculator(i);
+			condition.twice();
+			condition.three_times();
+		}
+	}
+}
+
+
+//calculator
+class Calculator{
+	double growthrate;
+	double growth;
+	double years;
+	double assets;
+	//constructor
+	Calculator(double growthrate){
+		this.growthrate = growthrate;
+		this.growth = 1+growthrate/100;
+		this.years = 0;
+		this.assets = 1;
+	}
+
+	//calculaSte the number of years assets become twice as current
+
+	void twice() {
+		while(assets <= 2) {
+			assets = assets*growth;
+		    years += 1;
+		}
+		BigDecimal num = new BigDecimal(growthrate);
+		BigDecimal growthrate = num.setScale(2,BigDecimal.ROUND_DOWN);
+	    System.out.println("If you manage your assets with"+growthrate+"% of growthrate, your current assets will be twice"+
+		"for"+years+"years");
+	}
+
+
+	//calculate the number of years assets become three times as current
+	void three_times() {
+		while(assets <= 3) {
+			assets = assets*growth;
+		    years += 1;
+		}
+		BigDecimal num = new BigDecimal(growthrate);
+		BigDecimal growthrate = num.setScale(2,BigDecimal.ROUND_DOWN);
+	    System.out.println("If you manage your assets with"+growthrate+"% of growthrate, your current assets will be three times"+
+		"for"+years+"years");
+	}
+}
